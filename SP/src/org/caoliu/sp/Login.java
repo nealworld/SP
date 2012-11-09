@@ -1,21 +1,19 @@
 package org.caoliu.sp;
-
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
-
-public class Login extends Activity {
+import android.util.Log;
+public class Login extends Activity{
 	Button LoginButton ;
+	private static final String TAG = "MyActivity";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LoginButton = (Button) findViewById(R.id.LoginButton);       //安卓可以用xml布局文件给控件布局，通过此句得到布局文件里的控件
-        //布局文件在res/layout里面
-        LoginButton.setOnClickListener((android.view.View.OnClickListener) new myclickListener("login"));
         setContentView(R.layout.activity_login);
+        LoginButton = (Button) findViewById(R.id.LoginButton);       
+        LoginButton.setOnClickListener(new myclickListener("login"));
     }
 
     @Override
@@ -23,26 +21,21 @@ public class Login extends Activity {
         getMenuInflater().inflate(R.menu.activity_login, menu);
         return true;
     }
-    
-    public class myclickListener implements OnClickListener
+    public class myclickListener implements View.OnClickListener
     {
     	String id;
     	public myclickListener(String id)
     	{
     		this.id =id;
     	}
+
 		@Override
-		public void onClick(DialogInterface dialog, int which) {
+		public void onClick(View v) {
 			if(id.equals("login"))
 			{
-				
-				
-				//这里写button的响应事件
-				
-				
-				
+				 Log.println(RESULT_OK, TAG, "click the login button");
 			}
-					
+			
 		}
     	
     }
